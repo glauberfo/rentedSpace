@@ -79,17 +79,17 @@ class AppTheme {
   
   // Estilo de botão
   static ButtonStyle primaryButtonStyle = ButtonStyle(
-    backgroundColor: MaterialStateProperty.all(primaryYellow),
-    foregroundColor: MaterialStateProperty.all(darkGray),
-    padding: MaterialStateProperty.all(
+    backgroundColor: WidgetStateProperty.all(primaryYellow),
+    foregroundColor: WidgetStateProperty.all(darkGray),
+    padding: WidgetStateProperty.all(
       const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
     ),
-    shape: MaterialStateProperty.all(
+    shape: WidgetStateProperty.all(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
     ),
-    elevation: MaterialStateProperty.all(0),
+    elevation: WidgetStateProperty.all(0),
   );
   
   // Linha amarela decorativa

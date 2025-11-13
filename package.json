@@ -1,0 +1,13 @@
+{
+  "name": "space-rented",
+  "version": "1.0.0",
+  "description": "SpaceRented - Plataforma de aluguel de espaços (Flutter project with Builder.io integration)",
+  "scripts": {
+    "dev": "echo 'This is a Flutter project. Use: flutter run'",
+    "build": "echo 'This is a Flutter project. Use: flutter build'"
+  },
+  "keywords": ["flutter", "builder.io"],
+  "author": "",
+  "license": "ISC"
+}
+

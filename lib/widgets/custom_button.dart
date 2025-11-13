@@ -25,10 +25,10 @@ class CustomButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: AppTheme.primaryButtonStyle.copyWith(
           backgroundColor: backgroundColor != null
-              ? MaterialStateProperty.all(backgroundColor)
+              ? WidgetStateProperty.all(backgroundColor)
               : AppTheme.primaryButtonStyle.backgroundColor,
           foregroundColor: textColor != null
-              ? MaterialStateProperty.all(textColor)
+              ? WidgetStateProperty.all(textColor)
               : AppTheme.primaryButtonStyle.foregroundColor,
         ),
         child: isLoading
