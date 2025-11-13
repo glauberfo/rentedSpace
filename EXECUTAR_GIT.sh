@@ -31,20 +31,38 @@ echo "🚀 Verificando remote..."
 if git remote | grep -q origin; then
     REMOTE_URL=$(git remote get-url origin)
     echo "✅ Remote encontrado: $REMOTE_URL"
+    
+    # Detectar branch atual
+    CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || echo "main")
+    echo "📌 Branch atual: $CURRENT_BRANCH"
+    
+    # Configurar estratégia de pull (rebase por padrão)
+    if ! git config pull.rebase > /dev/null 2>&1; then
+        echo "⚙️  Configurando pull.rebase = true (pode ser alterado depois)"
+        git config pull.rebase true
+    fi
+    
+    echo ""
+    echo "🔄 Fazendo pull primeiro (para sincronizar)..."
+    if git pull --rebase origin "$CURRENT_BRANCH" 2>&1; then
+        echo "✅ Pull realizado com sucesso!"
+    else
+        echo "⚠️  Problema no pull. Tentando continuar mesmo assim..."
+    fi
+    
     echo ""
     echo "🚀 Fazendo push..."
-    
-    # Tentar push para main primeiro
-    if git push -u origin main 2>&1; then
-        echo "✅ Push realizado com sucesso para branch 'main'!"
-    # Se falhar, tentar master
-    elif git push -u origin master 2>&1; then
-        echo "✅ Push realizado com sucesso para branch 'master'!"
+    if git push -u origin "$CURRENT_BRANCH" 2>&1; then
+        echo "✅ Push realizado com sucesso!"
     else
-        echo "⚠️  Erro ao fazer push. Verifique:"
-        echo "   - Autenticação configurada"
+        echo "⚠️  Erro ao fazer push. Possíveis causas:"
+        echo "   - Branches divergentes (execute: ./resolver_divergencia.sh)"
+        echo "   - Autenticação necessária"
         echo "   - Permissões no repositório"
         echo "   - Conexão com internet"
+        echo ""
+        echo "💡 Dica: Se houver divergência, execute:"
+        echo "   ./resolver_divergencia.sh"
     fi
 else
     echo "⚠️  Nenhum remote 'origin' configurado"
