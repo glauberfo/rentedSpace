@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 # Script para fazer commit e push do projeto SpaceRented
-# Execute: bash EXECUTAR_GIT.sh
+# Execute: bash EXECUTAR_GIT.sh ou ./EXECUTAR_GIT.sh
 
-cd /Users/glauberfo/projetos/SpaceRented
+cd "$(dirname "$0")"
 
 echo "🔄 Verificando status do Git..."
 git status
