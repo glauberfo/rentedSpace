@@ -1,0 +1,33 @@
+name: rented_space
+description: SpaceRented - Plataforma de aluguel de espaços
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Supabase
+  supabase_flutter: ^2.5.6
+  
+  # Formatação e máscaras
+  intl: ^0.19.0
+  mask_text_input_formatter: ^2.9.0
+  
+  # SVG (para logo se necessário)
+  flutter_svg: ^2.0.9
+  
+  # Utilitários
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
