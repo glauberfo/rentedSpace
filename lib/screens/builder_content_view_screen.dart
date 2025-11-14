@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'builder_content_list_screen.dart';
+import '../services/builder_io_service.dart';
 
-/// Tela para exibir o Builder.io em uma WebView
-/// 
-/// Para usar:
-/// 1. Obtenha sua API Key do Builder.io em: https://builder.io
-/// 2. Substitua 'YOUR_BUILDER_API_KEY' pela sua chave em lib/config/builder_io_config.dart
-/// 3. Substitua 'YOUR_MODEL_NAME' pelo nome do seu modelo no Builder.io
-class BuilderIOScreen extends StatefulWidget {
-  const BuilderIOScreen({super.key});
+/// Tela para visualizar um conteúdo específico do Builder.io
+class BuilderContentViewScreen extends StatefulWidget {
+  final BuilderContent content;
+
+  const BuilderContentViewScreen({
+    super.key,
+    required this.content,
+  });
 
   @override
-  State<BuilderIOScreen> createState() => _BuilderIOScreenState();
+  State<BuilderContentViewScreen> createState() => _BuilderContentViewScreenState();
 }
 
-class _BuilderIOScreenState extends State<BuilderIOScreen> {
+class _BuilderContentViewScreenState extends State<BuilderContentViewScreen> {
   late final WebViewController _controller;
+  final _builderService = BuilderIOService();
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
     
-    // Configurar o WebViewController
+    final previewUrl = _builderService.getPreviewUrl(widget.content.id);
+    
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
@@ -50,29 +52,15 @@ class _BuilderIOScreenState extends State<BuilderIOScreen> {
           },
         ),
       )
-      ..loadRequest(
-        Uri.parse('https://builder.io'),
-      );
+      ..loadRequest(Uri.parse(previewUrl));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Builder.io'),
+        title: Text(widget.content.displayName),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const BuilderContentListScreen(),
-                ),
-              );
-            },
-            tooltip: 'Ver conteúdos',
-          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
