@@ -83,25 +83,42 @@ const YellowLine = () => <div className="yellow-line"></div>;
 
 const CompanyLogo = () => (
   <svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="130" cy="130" r="45" stroke="#E8C872" strokeWidth="10" fill="none" />
+    <defs>
+      <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FFE680" stopOpacity="1" />
+        <stop offset="50%" stopColor="#FFD700" stopOpacity="1" />
+        <stop offset="100%" stopColor="#E8C872" stopOpacity="1" />
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <circle cx="130" cy="130" r="45" stroke="url(#sunGradient)" strokeWidth="10" fill="none" filter="url(#glow)" />
 
     {/* Raios maiores */}
-    <path d="M130 10 L130 55" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M130 205 L130 250" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M10 130 L55 130" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M205 130 L250 130" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
+    <g transform-origin="130 130">
+      <path d="M130 10 L130 55" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M130 205 L130 250" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M10 130 L55 130" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M205 130 L250 130" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
 
-    {/* Raios diagonais */}
-    <path d="M55 55 L85 85" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M175 175 L205 205" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M55 205 L85 175" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
-    <path d="M175 85 L205 55" stroke="#E8C872" strokeWidth="10" strokeLinecap="round"/>
+      {/* Raios diagonais */}
+      <path d="M55 55 L85 85" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M175 175 L205 205" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M55 205 L85 175" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M175 85 L205 55" stroke="url(#sunGradient)" strokeWidth="10" strokeLinecap="round" filter="url(#glow)"/>
 
-    {/* Raios curvos orgânicos */}
-    <path d="M130 15 C135 25 135 45 130 55" stroke="#E8C872" strokeWidth="6" strokeLinecap="round"/>
-    <path d="M245 130 C235 135 215 135 205 130" stroke="#E8C872" strokeWidth="6" strokeLinecap="round"/>
-    <path d="M130 245 C125 235 125 215 130 205" stroke="#E8C872" strokeWidth="6" strokeLinecap="round"/>
-    <path d="M15 130 C25 125 45 125 55 130" stroke="#E8C872" strokeWidth="6" strokeLinecap="round"/>
+      {/* Raios curvos orgânicos */}
+      <path d="M130 15 C135 25 135 45 130 55" stroke="url(#sunGradient)" strokeWidth="6" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M245 130 C235 135 215 135 205 130" stroke="url(#sunGradient)" strokeWidth="6" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M130 245 C125 235 125 215 130 205" stroke="url(#sunGradient)" strokeWidth="6" strokeLinecap="round" filter="url(#glow)"/>
+      <path d="M15 130 C25 125 45 125 55 130" stroke="url(#sunGradient)" strokeWidth="6" strokeLinecap="round" filter="url(#glow)"/>
+    </g>
   </svg>
 );
 
@@ -220,6 +237,7 @@ const ProgressIndicator = ({ currentStep, stepLabels }) => {
 // Carousel
 const Carousel = ({ onStarted }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
     {
@@ -248,27 +266,39 @@ const Carousel = ({ onStarted }) => {
     },
   ];
 
+  const changeSlide = (newIndex) => {
+    if (newIndex === currentSlide || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(newIndex);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 300);
+  };
+
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) {
-      setCurrentSlide(currentSlide + 1);
+      changeSlide(currentSlide + 1);
     }
   };
 
   const prevSlide = () => {
     if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
+      changeSlide(currentSlide - 1);
     }
   };
 
   const goToSlide = (index) => {
-    setCurrentSlide(index);
+    changeSlide(index);
   };
 
   const slide = slides[currentSlide];
 
   return (
     <div className="carousel-container">
-      <div className={`carousel-slide ${slide.bg}`}>
+      <div className={`carousel-slide ${slide.bg} ${isTransitioning ? 'fade-out' : ''}`}>
         <div className="carousel-icon">{slide.icon === 'logo' ? <CompanyLogo /> : slide.icon}</div>
         <h1 className="carousel-title">{slide.title}</h1>
         <p className="carousel-description">{slide.description}</p>
