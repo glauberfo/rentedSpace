@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/app_theme.dart';
-import '../widgets/company_logo_widget.dart';
 import 'login_screen.dart';
 
 class OnboardingCarouselScreen extends StatefulWidget {
@@ -198,7 +198,20 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
 
   Widget _buildIcon(String icon) {
     if (icon == 'logo') {
-      return const CompanyLogoWidget(size: 140);
+      return SvgPicture.asset(
+        'lib/assets/company_logo.svg',
+        width: 140,
+        height: 140,
+        fit: BoxFit.contain,
+        placeholderBuilder: (BuildContext context) => Container(
+          width: 140,
+          height: 140,
+          color: Colors.grey[200],
+          child: const Center(child: CircularProgressIndicator()),
+        ),
+        // Adicionar tratamento de erro
+        semanticsLabel: 'Company Logo',
+      );
     }
     return Text(
       icon,

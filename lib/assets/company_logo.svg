@@ -1,0 +1,39 @@
+<svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE680" stop-opacity="1" />
+      <stop offset="50%" stop-color="#FFD700" stop-opacity="1" />
+      <stop offset="100%" stop-color="#E8C872" stop-opacity="1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <circle cx="130" cy="130" r="45" stroke="url(#sunGradient)" stroke-width="10" fill="none" filter="url(#glow)" />
+
+  <!-- Raios maiores -->
+  <g transform-origin="130 130">
+    <path d="M130 10 L130 55" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M130 205 L130 250" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M10 130 L55 130" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M205 130 L250 130" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+
+    <!-- Raios diagonais -->
+    <path d="M55 55 L85 85" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M175 175 L205 205" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M55 205 L85 175" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M175 85 L205 55" stroke="url(#sunGradient)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+
+    <!-- Raios curvos orgânicos -->
+    <path d="M130 15 C135 25 135 45 130 55" stroke="url(#sunGradient)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M245 130 C235 135 215 135 205 130" stroke="url(#sunGradient)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M130 245 C125 235 125 215 130 205" stroke="url(#sunGradient)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M15 130 C25 125 45 125 55 130" stroke="url(#sunGradient)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+  </g>
+</svg>
+

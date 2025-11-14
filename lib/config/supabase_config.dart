@@ -58,10 +58,17 @@ Future<void> initializeSupabase() async {
       print('');
       print('❌ Erro ao inicializar Supabase: $e');
       print('   Verifique suas credenciais em lib/config/supabase_config.dart');
+      print('   O app continuará funcionando, mas funcionalidades do Supabase podem não estar disponíveis.');
       print('');
     }
-    rethrow;
+    // Não fazer rethrow para evitar crash - o app pode funcionar sem Supabase em alguns casos
+    // rethrow;
   }
 }
 
-SupabaseClient get supabase => Supabase.instance.client;
+SupabaseClient get supabase {
+  if (!Supabase.instance.isInitialized) {
+    throw Exception('Supabase não foi inicializado. Verifique a conexão e as credenciais.');
+  }
+  return Supabase.instance.client;
+}
