@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: RichText(
                       text: TextSpan(
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                           color: AppTheme.mediumGray,
                         ),
@@ -188,4 +188,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

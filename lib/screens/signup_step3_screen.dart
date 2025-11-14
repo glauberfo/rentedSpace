@@ -47,9 +47,11 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
       _countryController.text = widget.existingUserData!.country ?? 'Brasil';
       _zipCodeController.text = widget.existingUserData!.zipCode ?? '';
       _streetController.text = widget.existingUserData!.street ?? '';
-      _streetNumberController.text = widget.existingUserData!.streetNumber ?? '';
+      _streetNumberController.text =
+          widget.existingUserData!.streetNumber ?? '';
       _complementController.text = widget.existingUserData!.complement ?? '';
-      _neighborhoodController.text = widget.existingUserData!.neighborhood ?? '';
+      _neighborhoodController.text =
+          widget.existingUserData!.neighborhood ?? '';
       _cityController.text = widget.existingUserData!.city ?? '';
       _stateController.text = widget.existingUserData!.state ?? '';
     }
@@ -79,7 +81,7 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
 
     try {
       final authService = AuthService();
-      
+
       // Criar usuário no Supabase Auth
       final email = widget.existingUserData?.email ?? '';
       await authService.signUp(email, widget.password);
@@ -111,7 +113,7 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Cadastro realizado com sucesso!')),
         );
-        
+
         // Navegar para tela de login
         Navigator.pushAndRemoveUntil(
           context,
@@ -122,7 +124,8 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erro ao finalizar cadastro: ${e.toString()}')),
+          SnackBar(
+              content: Text('Erro ao finalizar cadastro: ${e.toString()}')),
         );
       }
     } finally {
@@ -148,9 +151,9 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
               children: [
                 const SizedBox(height: 20),
                 // Indicador de progresso
-                ProgressIndicatorWidget(
+                const ProgressIndicatorWidget(
                   currentStep: 3,
-                  stepLabels: const [
+                  stepLabels: [
                     'Dados básicos',
                     'Dados adicionais',
                     'Endereço',
@@ -208,7 +211,8 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
                 CustomTextField(
                   label: 'complemento',
                   controller: _complementController,
-                  validator: (value) => Validators.required(value, 'Complemento'),
+                  validator: (value) =>
+                      Validators.required(value, 'Complemento'),
                   isRequired: true,
                 ),
                 const SizedBox(height: 16),
@@ -250,4 +254,3 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
     );
   }
 }
-

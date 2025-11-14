@@ -11,23 +11,25 @@ import 'package:flutter/foundation.dart';
 // 5. Cole abaixo:
 
 const String _supabaseUrl = 'https://oxuchfcgporcmyntjnfh.supabase.co';
-const String _supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94dWNoZmNncG9yY215bnRqbmZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNDI5NDEsImV4cCI6MjA3ODYxODk0MX0.ST1gqAvEJZFzx5miOm7kuU7-EF9SM2aIZj63o5lnu0Y';
+const String _supabaseAnonKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94dWNoZmNncG9yY215bnRqbmZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNDI5NDEsImV4cCI6MjA3ODYxODk0MX0.ST1gqAvEJZFzx5miOm7kuU7-EF9SM2aIZj63o5lnu0Y';
 
 // ============================================
 
 Future<void> initializeSupabase() async {
   // Tentar obter de variáveis de ambiente primeiro (para produção)
-  final String supabaseUrl = const String.fromEnvironment(
+  const String supabaseUrl = String.fromEnvironment(
     'SUPABASE_URL',
     defaultValue: _supabaseUrl,
   );
-  final String supabaseAnonKey = const String.fromEnvironment(
+  const String supabaseAnonKey = String.fromEnvironment(
     'SUPABASE_ANON_KEY',
     defaultValue: _supabaseAnonKey,
   );
 
   // Verificar se as credenciais foram configuradas
-  if (supabaseUrl == 'YOUR_SUPABASE_URL' || supabaseAnonKey == 'YOUR_SUPABASE_ANON_KEY') {
+  if (supabaseUrl == 'YOUR_SUPABASE_URL' ||
+      supabaseAnonKey == 'YOUR_SUPABASE_ANON_KEY') {
     if (kDebugMode) {
       print('');
       print('⚠️  ATENÇÃO: Configure as credenciais do Supabase!');
@@ -45,10 +47,11 @@ Future<void> initializeSupabase() async {
       anonKey: supabaseAnonKey,
       debug: kDebugMode,
     );
-    
+
     if (kDebugMode) {
       print('✅ Supabase inicializado com sucesso');
-      print('   URL: ${supabaseUrl.substring(0, supabaseUrl.length > 30 ? 30 : supabaseUrl.length)}...');
+      print(
+          '   URL: ${supabaseUrl.substring(0, supabaseUrl.length > 30 ? 30 : supabaseUrl.length)}...');
     }
   } catch (e) {
     if (kDebugMode) {
@@ -62,4 +65,3 @@ Future<void> initializeSupabase() async {
 }
 
 SupabaseClient get supabase => Supabase.instance.client;
-

@@ -3,7 +3,7 @@ import '../theme/app_theme.dart';
 
 class LogoWidget extends StatelessWidget {
   final double size;
-  
+
   const LogoWidget({
     super.key,
     this.size = 120,
@@ -18,7 +18,7 @@ class LogoWidget extends StatelessWidget {
         Container(
           width: size,
           height: size,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: AppTheme.primaryYellow,
           ),
@@ -90,4 +90,3 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
-

@@ -29,7 +29,7 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
   final _phoneController = TextEditingController();
   final _birthDateController = TextEditingController();
   String? _selectedGender;
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   final _phoneFormatter = MaskTextInputFormatter(
     mask: '(##) #####-####',
@@ -108,9 +108,9 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
               children: [
                 const SizedBox(height: 20),
                 // Indicador de progresso
-                ProgressIndicatorWidget(
+                const ProgressIndicatorWidget(
                   currentStep: 2,
-                  stepLabels: const [
+                  stepLabels: [
                     'Dados básicos',
                     'Dados adicionais',
                     'Endereço',
@@ -139,10 +139,11 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
                     // Prefixo +55
                     Container(
                       width: 80,
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 16),
+                      decoration: const BoxDecoration(
                         color: AppTheme.primaryYellow,
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(8),
                           bottomLeft: Radius.circular(8),
                         ),
@@ -260,12 +261,13 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoginScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
                       );
                     },
                     child: RichText(
                       text: TextSpan(
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                           color: AppTheme.mediumGray,
                         ),
@@ -330,4 +332,3 @@ class _GenderButton extends StatelessWidget {
     );
   }
 }
-

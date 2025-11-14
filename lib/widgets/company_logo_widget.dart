@@ -14,7 +14,7 @@ class CompanyLogoWidget extends StatefulWidget {
 }
 
 class _CompanyLogoWidgetState extends State<CompanyLogoWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _rotationController;
   late AnimationController _pulseController;
   late AnimationController _floatController;

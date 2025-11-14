@@ -60,7 +60,9 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
       email: widget.existingUserData?.email ?? '',
       firstName: _firstNameController.text.trim(),
       lastName: _lastNameController.text.trim(),
-      cpf: _isBrazilian ? _cpfController.text.replaceAll(RegExp(r'[^0-9]'), '') : null,
+      cpf: _isBrazilian
+          ? _cpfController.text.replaceAll(RegExp(r'[^0-9]'), '')
+          : null,
       isBrazilian: _isBrazilian,
     );
 
@@ -89,9 +91,9 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
               children: [
                 const SizedBox(height: 20),
                 // Indicador de progresso
-                ProgressIndicatorWidget(
+                const ProgressIndicatorWidget(
                   currentStep: 1,
-                  stepLabels: const [
+                  stepLabels: [
                     'Dados básicos',
                     'Dados adicionais',
                     'Endereço',
@@ -209,4 +211,3 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
     );
   }
 }
-
