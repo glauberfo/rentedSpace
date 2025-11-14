@@ -95,7 +95,7 @@ class SunLogoPainter extends CustomPainter {
     final radius = size.width * 0.173; // 45/260
     
     // Gradiente para o sol
-    final gradient = LinearGradient(
+    const gradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
