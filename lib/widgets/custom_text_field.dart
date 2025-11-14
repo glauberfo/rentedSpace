@@ -38,7 +38,11 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       maxLines: maxLines,
-      decoration: AppTheme.inputDecoration(label, isRequired: isRequired).copyWith(
+      style: AppTheme.labelStyle(context).copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
+      decoration: AppTheme.inputDecoration(context, label, isRequired: isRequired).copyWith(
         suffixIcon: suffixIcon,
       ),
     );

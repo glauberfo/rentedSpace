@@ -99,9 +99,9 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
                 ),
                 const SizedBox(height: 32),
                 // Título
-                const Text(
-                  'criar conta',
-                  style: AppTheme.titleStyle,
+                Text(
+                  'Criar Conta',
+                  style: AppTheme.titleStyle(context),
                 ),
                 AppTheme.yellowLine(),
                 const SizedBox(height: 24),
@@ -147,9 +147,9 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
                       },
                       activeColor: AppTheme.primaryYellow,
                     ),
-                    const Text(
-                      "I'm not brazilian",
-                      style: AppTheme.labelStyle,
+                    Text(
+                      "Não sou brasileiro",
+                      style: AppTheme.labelStyle(context),
                     ),
                   ],
                 ),
@@ -195,9 +195,9 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
                         ),
                       );
                     },
-                    child: const Text(
+                    child: Text(
                       'esqueceu sua senha?',
-                      style: AppTheme.linkStyle,
+                      style: AppTheme.linkStyle(context),
                     ),
                   ),
                 ),

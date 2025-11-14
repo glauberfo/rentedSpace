@@ -118,9 +118,9 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
                 ),
                 const SizedBox(height: 32),
                 // Título
-                const Text(
-                  'criar conta',
-                  style: AppTheme.titleStyle,
+                Text(
+                  'Dados Adicionais',
+                  style: AppTheme.titleStyle(context),
                 ),
                 AppTheme.yellowLine(),
                 const SizedBox(height: 24),
@@ -175,9 +175,9 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'sexo *',
-                      style: AppTheme.labelStyle,
+                      style: AppTheme.labelStyle(context),
                     ),
                     const SizedBox(height: 8),
                     Row(
@@ -264,13 +264,16 @@ class _SignUpStep2ScreenState extends State<SignUpStep2Screen> {
                       );
                     },
                     child: RichText(
-                      text: const TextSpan(
-                        style: AppTheme.linkStyle,
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppTheme.mediumGray,
+                        ),
                         children: [
-                          TextSpan(text: 'já possui uma conta? '),
+                          const TextSpan(text: 'já possui uma conta? '),
                           TextSpan(
                             text: 'entre agora!',
-                            style: AppTheme.linkHighlightStyle,
+                            style: AppTheme.linkHighlightStyle(context),
                           ),
                         ],
                       ),

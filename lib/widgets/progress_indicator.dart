@@ -33,13 +33,27 @@ class ProgressIndicatorWidget extends StatelessWidget {
                     ),
                   const SizedBox(height: 8),
                   Container(
-                    width: 40,
-                    height: 40,
+                    width: 44,
+                    height: 44,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: isActive || isCompleted
-                          ? AppTheme.primaryYellow
+                      gradient: isActive
+                          ? AppTheme.warmGradient
+                          : (isCompleted
+                              ? AppTheme.slide3Gradient
+                              : null),
+                      color: isCompleted || isActive
+                          ? null
                           : AppTheme.lightGray,
+                      boxShadow: isActive
+                          ? [
+                              BoxShadow(
+                                color: AppTheme.primaryCoral.withOpacity(0.3),
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ]
+                          : null,
                     ),
                     child: Center(
                       child: Text(
@@ -49,7 +63,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                               ? AppTheme.darkGray
                               : AppTheme.mediumGray,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 18,
                         ),
                       ),
                     ),
@@ -71,10 +85,13 @@ class ProgressIndicatorWidget extends StatelessWidget {
             );
           }),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
         Container(
-          height: 2,
-          color: AppTheme.primaryYellow,
+          height: 3,
+          decoration: BoxDecoration(
+            gradient: AppTheme.warmGradient,
+            borderRadius: BorderRadius.circular(2),
+          ),
           margin: const EdgeInsets.symmetric(horizontal: 20),
         ),
       ],

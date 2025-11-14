@@ -158,9 +158,9 @@ class _SignUpStep3ScreenState extends State<SignUpStep3Screen> {
                 ),
                 const SizedBox(height: 32),
                 // Título
-                const Text(
-                  'criar conta',
-                  style: AppTheme.titleStyle,
+                Text(
+                  'Endereço',
+                  style: AppTheme.titleStyle(context),
                 ),
                 AppTheme.yellowLine(),
                 const SizedBox(height: 24),

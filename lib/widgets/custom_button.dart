@@ -19,31 +19,43 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
-      child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
-        style: AppTheme.primaryButtonStyle.copyWith(
-          backgroundColor: backgroundColor != null
-              ? WidgetStateProperty.all(backgroundColor)
-              : AppTheme.primaryButtonStyle.backgroundColor,
-          foregroundColor: textColor != null
-              ? WidgetStateProperty.all(textColor)
-              : AppTheme.primaryButtonStyle.foregroundColor,
+      decoration: BoxDecoration(
+        gradient: AppTheme.warmGradient,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.primaryCoral.withOpacity(0.25),
+            blurRadius: 15,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: isLoading ? null : onPressed,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+            child: isLoading
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(AppTheme.darkGray),
+                    ),
+                  )
+                : Center(
+                    child: Text(
+                      text.toLowerCase(),
+                      style: AppTheme.buttonTextStyle(context),
+                    ),
+                  ),
+          ),
         ),
-        child: isLoading
-            ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(AppTheme.darkGray),
-                ),
-              )
-            : Text(
-                text.toLowerCase(),
-                style: AppTheme.buttonTextStyle,
-              ),
       ),
     );
   }

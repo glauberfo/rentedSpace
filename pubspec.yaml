@@ -20,6 +20,9 @@ dependencies:
   # SVG (para logo se necessário)
   flutter_svg: ^2.0.9
   
+  # Fontes
+  google_fonts: ^6.1.0
+  
   # Utilitários
   cupertino_icons: ^1.0.6
   

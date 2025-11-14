@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'config/supabase_config.dart';
-import 'screens/login_screen.dart';
+import 'screens/onboarding_carousel_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SpaceRented',
+      title: 'Iluminarte',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.amber,
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const OnboardingCarouselScreen(),
     );
   }
 }

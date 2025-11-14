@@ -83,11 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 // Título
-                const Text(
-                  'entre',
-                  style: AppTheme.titleStyle,
+                Text(
+                  'Bem-vindo de volta!',
+                  style: AppTheme.titleStyle(context),
                 ),
                 AppTheme.yellowLine(),
                 const SizedBox(height: 24),
@@ -133,16 +133,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     },
-                    child: const Text(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text(
                       'Esqueceu sua senha?',
-                      style: AppTheme.linkStyle,
+                      style: AppTheme.linkStyle(context),
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
                 // Botão Login
                 CustomButton(
-                  text: 'log in',
+                  text: 'entrar',
                   onPressed: _handleLogin,
                   isLoading: _isLoading,
                 ),
@@ -153,14 +158,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: TextButton(
                     onPressed: _navigateToSignUp,
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                     child: RichText(
-                      text: const TextSpan(
-                        style: AppTheme.linkStyle,
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppTheme.mediumGray,
+                        ),
                         children: [
-                          TextSpan(text: 'Primeira vez? '),
+                          const TextSpan(text: 'Sem conta? '),
                           TextSpan(
-                            text: 'Cadastre-se.',
-                            style: AppTheme.linkHighlightStyle,
+                            text: 'Cadastre-se agora',
+                            style: AppTheme.linkHighlightStyle(context),
                           ),
                         ],
                       ),
