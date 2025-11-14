@@ -225,7 +225,7 @@ const Carousel = ({ onStarted }) => {
     {
       icon: 'logo',
       title: 'Bem-vindo à Iluminarte!',
-      description: 'Arte, afeto e aprendizado para crianças de todas as idades',
+      description: 'Descubra o mundo encantado da Iluminarte!\nReserve oficinas, encontre novas atividades e viva momentos de arte, aprendizado e afeto para as crianças e famílias — tudo em poucos cliques.\n✨ Toque para conhecer e se apaixonar.',
       bg: 'slide-welcome',
     },
     {

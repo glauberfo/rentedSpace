@@ -218,6 +218,7 @@ body {
   color: #4a5568;
   max-width: 500px;
   font-weight: 500;
+  white-space: pre-line;
 }
 
 .carousel-dots {
