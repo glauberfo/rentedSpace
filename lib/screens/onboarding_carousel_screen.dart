@@ -7,7 +7,8 @@ class OnboardingCarouselScreen extends StatefulWidget {
   const OnboardingCarouselScreen({super.key});
 
   @override
-  State<OnboardingCarouselScreen> createState() => _OnboardingCarouselScreenState();
+  State<OnboardingCarouselScreen> createState() =>
+      _OnboardingCarouselScreenState();
 }
 
 class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
@@ -20,25 +21,29 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
     OnboardingSlide(
       icon: 'logo',
       title: 'Bem-vindo à Iluminarte!',
-      description: 'Descubra o mundo encantado da Iluminarte!\nReserve oficinas, encontre novas atividades e viva momentos de arte, aprendizado e afeto para as crianças e famílias — tudo em poucos cliques.\n✨ Toque para conhecer e se apaixonar.',
+      description:
+          'Descubra o mundo encantado da Iluminarte!\nReserve oficinas, encontre novas atividades e viva momentos de arte, aprendizado e afeto para as crianças e famílias —\n\nTudo em poucos cliques.\n✨\n\nToque para conhecer e se apaixonar.',
       gradient: AppTheme.slideWelcomeGradient,
     ),
     OnboardingSlide(
       icon: '🎨',
       title: 'Explore Aulas',
-      description: 'Descubra uma variedade de aulas infantis: pintura, culinária, dança, natação e muito mais!',
+      description:
+          'Descubra uma variedade de aulas infantis: pintura, culinária, dança, natação e muito mais!',
       gradient: AppTheme.slide1Gradient,
     ),
     OnboardingSlide(
       icon: '❤️',
       title: 'Instrutores Qualificados',
-      description: 'Conheça educadores apaixonados por ensinar com arte, afeto e aprendizado.',
+      description:
+          'Conheça educadores apaixonados por ensinar com arte, afeto e aprendizado.',
       gradient: AppTheme.slide2Gradient,
     ),
     OnboardingSlide(
       icon: '⭐',
       title: 'Reserve com Facilidade',
-      description: 'Escolha a aula perfeita, veja horários disponíveis e reserve em segundos!',
+      description:
+          'Escolha a aula perfeita, veja horários disponíveis e reserve em segundos!',
       gradient: AppTheme.slide3Gradient,
     ),
   ];
@@ -126,7 +131,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
               // Ícone/Logo
               _buildIcon(slide.icon),
               const SizedBox(height: 32),
-              
+
               // Título
               FadeTransition(
                 opacity: _fadeController,
@@ -146,7 +151,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
                 ),
               ),
               const SizedBox(height: 16),
-              
+
               // Descrição
               TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0.0, end: 1.0),
@@ -168,7 +173,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
                 },
               ),
               const SizedBox(height: 52),
-              
+
               // Botões
               TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0.0, end: 1.0),
@@ -185,7 +190,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
                 },
               ),
               const Spacer(),
-              
+
               // Indicadores
               _buildDots(),
               const SizedBox(height: 40),
@@ -203,13 +208,13 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen>
         width: 140,
         height: 140,
         fit: BoxFit.contain,
+        alignment: Alignment.center,
         placeholderBuilder: (BuildContext context) => Container(
           width: 140,
           height: 140,
           color: Colors.grey[200],
           child: const Center(child: CircularProgressIndicator()),
         ),
-        // Adicionar tratamento de erro
         semanticsLabel: 'Company Logo',
       );
     }
@@ -372,4 +377,3 @@ class OnboardingSlide {
     required this.gradient,
   });
 }
-

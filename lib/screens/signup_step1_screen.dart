@@ -113,6 +113,8 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
                   controller: _firstNameController,
                   validator: (value) => Validators.required(value, 'Nome'),
                   isRequired: true,
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.words,
                 ),
                 const SizedBox(height: 16),
                 // Campo Sobrenome
@@ -121,6 +123,7 @@ class _SignUpStep1ScreenState extends State<SignUpStep1Screen> {
                   controller: _lastNameController,
                   validator: (value) => Validators.required(value, 'Sobrenome'),
                   isRequired: true,
+                  textCapitalization: TextCapitalization.words,
                 ),
                 const SizedBox(height: 16),
                 // Campo CPF

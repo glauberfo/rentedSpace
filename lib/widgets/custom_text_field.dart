@@ -13,6 +13,8 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final int? maxLines;
+  final bool autofocus;
+  final TextCapitalization textCapitalization;
 
   const CustomTextField({
     super.key,
@@ -26,6 +28,8 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.suffixIcon,
     this.maxLines = 1,
+    this.autofocus = false,
+    this.textCapitalization = TextCapitalization.none,
   });
 
   @override
@@ -38,6 +42,8 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       maxLines: maxLines,
+      autofocus: autofocus,
+      textCapitalization: textCapitalization,
       style: AppTheme.labelStyle(context).copyWith(
         fontSize: 14,
         fontWeight: FontWeight.w500,

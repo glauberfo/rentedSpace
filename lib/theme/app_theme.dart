@@ -79,15 +79,15 @@ class AppTheme {
     letterSpacing: -0.5,
   );
   
-  static TextStyle carouselTitleStyle(BuildContext context) => GoogleFonts.nunito(
+  static TextStyle carouselTitleStyle(BuildContext context) => GoogleFonts.fredoka(
     fontSize: 42,
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w700,
     color: const Color(0xFF2C3E50),
     letterSpacing: -0.3,
     height: 1.2,
   );
-  
-  static TextStyle carouselDescriptionStyle(BuildContext context) => GoogleFonts.nunito(
+
+  static TextStyle carouselDescriptionStyle(BuildContext context) => GoogleFonts.fredoka(
     fontSize: 18,
     fontWeight: FontWeight.w500,
     color: darkGray,
@@ -178,4 +178,3 @@ class AppTheme {
     );
   }
 }
-

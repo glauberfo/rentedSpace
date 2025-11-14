@@ -85,9 +85,12 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 20),
                 // Título
-                Text(
-                  'Bem-vindo de volta!',
-                  style: AppTheme.titleStyle(context),
+                Center(
+                  child: Text(
+                    'Bem vindo!',
+                    style: AppTheme.titleStyle(context),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 AppTheme.yellowLine(),
                 const SizedBox(height: 24),
