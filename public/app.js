@@ -223,7 +223,7 @@ const Carousel = ({ onStarted }) => {
 
   const slides = [
     {
-      icon: <CompanyLogo />,
+      icon: 'logo',
       title: 'Bem-vindo à Iluminarte!',
       description: 'Arte, afeto e aprendizado para crianças de todas as idades',
       bg: 'slide-welcome',
@@ -269,7 +269,7 @@ const Carousel = ({ onStarted }) => {
   return (
     <div className="carousel-container">
       <div className={`carousel-slide ${slide.bg}`}>
-        <div className="carousel-icon">{slide.icon}</div>
+        <div className="carousel-icon">{slide.icon === 'logo' ? <CompanyLogo /> : slide.icon}</div>
         <h1 className="carousel-title">{slide.title}</h1>
         <p className="carousel-description">{slide.description}</p>
 
